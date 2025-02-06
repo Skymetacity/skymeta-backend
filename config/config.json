@@ -1,15 +1,19 @@
 {
   "development": {
-    "username": "usm2waw6eo8ggbgd",
-    "password": "uG9jGWVP2ohIOtX05Amr",
-    "database": "bcpulahqo8ghy1valhoo",
-    "host": "bcpulahqo8ghy1valhoo-mysql.services.clever-cloud.com",
+    "username": "root",
+    "password": "gGjjIbrUIdOwadVVxDyYiQnGzdLMtRTE",
+    "database": "railway",
+    "host": "junction.proxy.rlwy.net",
     "dialect": "mysql",
+    "port": 17589,
     "pool": {
       "max": 5,
       "min": 0,
       "acquire": 30000,
       "idle": 10000
+    },
+    "dialectOptions": {
+      "connectTimeout": 120000
     }
   },
   "ent": {

@@ -9,7 +9,17 @@ const sequelize = new Sequelize(database, username, password, {
   host,
   dialect,
   logging: console.log,  
+  port: 17589,
+  dialectOptions: {
+    connectTimeout: 60000,
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 });
+
+
 // Test the connection
 try {
   await sequelize.authenticate(); // Test the connection to the database
