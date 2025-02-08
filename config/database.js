@@ -24,13 +24,7 @@ const initializeDatabase = async () => {
   try {
     await sequelize.authenticate();
     console.log("Database connected successfully!");
-
-    // Import models AFTER sequelize is initialized
-    const { models } = await import("../models/index.js");
-
-    // Fetch some users to test if data exists
-    const users = await models.User.findAll({ limit: 5 });
-    console.log("Users:", users);
+ 
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
