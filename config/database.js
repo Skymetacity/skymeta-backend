@@ -1,14 +1,14 @@
 import { Sequelize } from "sequelize";
 import config from "./config.json" with { type: "json" };
-// const config = require("./config.json");
+
 // Use the config for the 'development' environment
 const { username, password, database, host, dialect } = config.development;
 
-// Create a Sequelize instance using the imported configuration
+// Create a Sequelize instance
 const sequelize = new Sequelize(database, username, password, {
   host,
   dialect,
-  logging: console.log,  
+  logging: console.log,
   port: 17589,
   dialectOptions: {
     connectTimeout: 60000,
@@ -19,13 +19,24 @@ const sequelize = new Sequelize(database, username, password, {
   }
 });
 
+// Function to initialize the database
+const initializeDatabase = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected successfully!");
 
-// Test the connection
-try {
-  await sequelize.authenticate(); // Test the connection to the database
-  console.log("Database connected successfully!");
-} catch (error) {
-  console.error("Unable to connect to the database:", error);
-}
+    // Import models AFTER sequelize is initialized
+    const { models } = await import("../models/index.js");
 
-export default sequelize; // Export the sequelize instance to use in models
+    // Fetch some users to test if data exists
+    const users = await models.User.findAll({ limit: 5 });
+    console.log("Users:", users);
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+};
+
+// Call the function
+initializeDatabase();
+
+export default sequelize;
