@@ -1,6 +1,6 @@
 "use strict";
 
-import { Sequelize } from "sequelize";
+/** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
     await queryInterface.addColumn("Nfts", "size", {
