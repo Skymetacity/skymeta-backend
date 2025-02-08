@@ -23,6 +23,7 @@ const sequelize = new Sequelize(database, username, password, {
 const initializeDatabase = async () => {
   try {
     await sequelize.authenticate();
+    console.log(password, host);
     console.log("Database connected successfully!");
  
   } catch (error) {
