@@ -82,7 +82,7 @@ app.use(
 app.use("/api/nfts", nftRoutes);
 app.use("/api/users", userRoutes); // All user-related routes
 
-app.get("/", (req, res) => res.send("Welcome to Skymate docs"));
+app.get("/", (req, res) => res.send("Welcome to Skymate"));
 
 // generate a nonce
 app.get("/nonce", function (_, res) {
