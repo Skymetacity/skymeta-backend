@@ -1,4 +1,21 @@
 {
+  "development2": {
+    "username": "uw1udd6crb7pebsz",
+    "password": "ZeXCyez35xMRrfXUPi0s",
+    "database": "bbycywx6okgf9p57y71d",
+    "host": "bbycywx6okgf9p57y71d-mysql.services.clever-cloud.com",
+    "dialect": "mysql",
+    "port": 3306,
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    },
+    "dialectOptions": {
+      "connectTimeout": 120000
+    }
+  },
   "development": {
     "username": "root",
     "password": "gGjjIbrUIdOwadVVxDyYiQnGzdLMtRTE",
