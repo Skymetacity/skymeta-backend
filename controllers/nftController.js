@@ -54,6 +54,7 @@ const uploadNFT = async (req, res) => {
 const loadNFT = async (req, res) => {
   try {
     const nfts = await models.Nft.findAll({
+      where: { status: true },
       order: [["createdAt", "DESC"]],
       limit: 20,
     });
@@ -96,6 +97,7 @@ const buyNFT = async (req, res) => {
         { model: models.User, as: "user" },
       ],
     });
+    await models.Nft.update({ status: false }, { where: { tokenId } });
 
     return res.status(200).json({ status: "success", nft: boughtNfts });
   } catch (error) {
